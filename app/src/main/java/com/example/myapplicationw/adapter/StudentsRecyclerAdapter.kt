@@ -3,13 +3,13 @@ package com.example.myapplicationw.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplicationw.MyAdapter
-import  com.example.myapplicationw.R
-import  com.example.myapplicationw.model.Student
+import com.example.myapplicationw.OnItemClickListener
+import com.example.myapplicationw.R
+import com.example.myapplicationw.model.Student
 
 class StudentsRecyclerAdapter(private var students: List<Student>?): RecyclerView.Adapter<StudentViewHolder>() {
 
-    var listener: MyAdapter.OnItemClickListener? = null
+    var listener: OnItemClickListener? = null
 
     fun update(students: List<Student>?) {
         this.students = students

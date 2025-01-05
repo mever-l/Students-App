@@ -16,4 +16,16 @@ class Model private constructor() {
             students.add(student)
         }
     }
+
+    fun addStudent(student: Student) {
+     students.add(student)
+    }
+
+    fun editStudent(student: Student) {
+        students
+    }
+
+    fun deleteStudent(student: Student) {
+        students.remove(student)
+    }
 }

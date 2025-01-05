@@ -22,7 +22,6 @@ class Model private constructor() {
     }
 
     fun editStudent(student: Student) {
-        students
     }
 
     fun deleteStudent(student: Student) {

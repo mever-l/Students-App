@@ -1,5 +1,7 @@
 package com.example.myapplicationw.model
 
+import android.util.Log
+
 class Model private constructor() {
     val students: MutableList<Student> = ArrayList()
     companion object {
@@ -8,7 +10,7 @@ class Model private constructor() {
     init {
         for (i in 0..20) {
             val student = Student(
-                name = "Ben Shapiro $i",
+                name = "Hailey Kelly $i",
                 id = i.toString(),
                 avatarUrl = "",
                 isChecked = false

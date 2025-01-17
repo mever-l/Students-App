@@ -34,5 +34,10 @@ class AddStudentActivity : AppCompatActivity() {
             finish()
 
         }
+
+        val cancelButton = findViewById<Button>(R.id.add_student_cancel_button)
+        cancelButton.setOnClickListener {
+            finish()
+        }
     }
 }

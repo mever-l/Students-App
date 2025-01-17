@@ -1,5 +1,6 @@
 package com.example.myapplicationw
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,13 +12,14 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplicationw.R
 import com.example.myapplicationw.model.Model
 import com.example.myapplicationw.model.Student
+import java.io.Serializable
 
 interface OnItemClickListener {
     fun onItemClick(position: Int)
@@ -54,11 +56,12 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
         val adapter = StudentsRecyclerAdapter(students)
         adapter.listener = object : OnItemClickListener {
             override fun onItemClick(position: Int) {
-                Log.d("TAG", "On click Activity listener on position $position")
             }
 
             override fun onItemClick(student: Student?) {
-                Log.d("TAG", "On student clicked name: ${student?.name}")
+                val intent = Intent(this@StudentsRecyclerViewActivity, StudentDetailsActivity::class.java)
+                intent.putExtra("student", student as Serializable)
+                startActivity(intent)
             }
         }
         recyclerView.adapter = adapter
@@ -89,7 +92,6 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
 
             itemView.setOnClickListener {
                 Log.d("TAG", "On click listener on position $adapterPosition")
-//                listener?.onItemClick(adapterPosition)
                 listener?.onItemClick(student)
             }
         }

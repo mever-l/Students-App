@@ -59,4 +59,9 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
         }
         recyclerView.adapter = adapter
     }
+
+    override fun onResume() {
+        super.onResume()
+        (findViewById<RecyclerView>(R.id.students_recycler_view).adapter as? StudentsRecyclerAdapter)?.notifyDataSetChanged()
+    }
 }

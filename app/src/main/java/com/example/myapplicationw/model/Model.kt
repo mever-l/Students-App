@@ -24,6 +24,7 @@ class Model private constructor() {
     fun addStudent(student: Student) {
      students.add(student)
      adapter.update(students)
+        adapter.notifyItemInserted(students.size)
     }
 
     fun editStudent(student: Student) {

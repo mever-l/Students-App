@@ -35,24 +35,7 @@ class StudentsAdapter(private val students: List<Student>?): BaseAdapter() {
             }
         }
 
-//            var view = convertView
-//            if (convertView == null) {
-//                view = inflator.inflate(R.layout.student_list_row, parent, false)
-//                val studentCheckBox: CheckBox? = view?.findViewById(R.id.student_row_check_box)
-//
-//                studentCheckBox?.apply {
-//                    setOnClickListener {
-//                        (tag as? Int)?.let { tag ->
-//                            val student = students?.get(tag)
-//                            student?.isChecked = (it as? CheckBox)?.isChecked ?: false
-//                        }
-//                    }
-//                }
-//            }
-
-
         val student = students?.get(position)
-
         val nameTextView: TextView? = view?.findViewById(R.id.student_row_name_text_view)
         val idTextView: TextView? = view?.findViewById(R.id.student_row_id_text_view)
         val studentCheckBox: CheckBox? = view?.findViewById(R.id.student_row_check_box)

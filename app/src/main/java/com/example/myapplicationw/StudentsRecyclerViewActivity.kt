@@ -15,12 +15,10 @@ import com.example.myapplicationw.model.Student
 import java.io.Serializable
 
 interface OnItemClickListener {
-    fun onItemClick(position: Int)
-    fun onItemClick(student: Student?)
+    fun onItemClick(student: Student?, position: Int)
 }
 
 class StudentsRecyclerViewActivity : AppCompatActivity() {
-
     var students: MutableList<Student>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,12 +46,10 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
 
         val adapter = StudentsRecyclerAdapter(students)
         adapter.listener = object : OnItemClickListener {
-            override fun onItemClick(position: Int) {
-            }
-
-            override fun onItemClick(student: Student?) {
+            override fun onItemClick(student: Student?, position: Int) {
                 val intent = Intent(this@StudentsRecyclerViewActivity, StudentDetailsActivity::class.java)
                 intent.putExtra("student", student as Serializable)
+                intent.putExtra("position", position as Serializable)
                 startActivity(intent)
             }
         }

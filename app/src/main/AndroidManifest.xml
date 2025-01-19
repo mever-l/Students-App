@@ -16,13 +16,10 @@
             android:name=".StudentDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true" />
-        <activity
             android:name=".AddStudentActivity"
             android:exported="true" />
         <activity
-            android:name=".StudentsListViewActivity"
+            android:name=".EditStudentActivity"
             android:exported="true" />
         <activity
             android:name=".StudentsRecyclerViewActivity"

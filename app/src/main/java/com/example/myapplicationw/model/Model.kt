@@ -14,6 +14,8 @@ class Model private constructor() {
             val student = Student(
                 name = "Hailey Kelly $i",
                 id = i.toString(),
+                address = "Hatikva 55, Jerusalem",
+                phone = "05044444443",
                 avatarUrl = "",
                 isChecked = false
             )
@@ -22,12 +24,15 @@ class Model private constructor() {
     }
 
     fun addStudent(student: Student) {
-     students.add(student)
-     adapter.update(students)
+        students.add(student)
+        adapter.update(students)
         adapter.notifyItemInserted(students.size)
     }
 
-    fun editStudent(student: Student) {
+    fun editStudent(student: Student, position: Int) {
+        students.set(position, student)
+        adapter.update(students)
+        adapter.notifyItemChanged(position)
     }
 
     fun deleteStudent(student: Student) {

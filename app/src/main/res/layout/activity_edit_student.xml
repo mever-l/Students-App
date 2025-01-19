@@ -26,6 +26,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:text="Name"
+        android:textColor="@color/material_dynamic_neutral100"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_student_avatar_image_view" />
 
@@ -36,6 +37,7 @@
         android:layout_marginEnd="52dp"
         android:ems="10"
         android:inputType="text"
+        android:textColor="@color/material_dynamic_neutral100"
         app:layout_constraintBottom_toBottomOf="@id/textViewName"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -46,6 +48,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:text="ID"
+        android:textColor="@color/material_dynamic_neutral100"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
@@ -56,6 +59,7 @@
         android:layout_marginEnd="52dp"
         android:ems="10"
         android:inputType="text"
+        android:textColor="@color/material_dynamic_neutral100"
         app:layout_constraintBottom_toBottomOf="@+id/textViewId"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -66,6 +70,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:text="Address"
+        android:textColor="@color/material_dynamic_neutral100"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewId" />
 
@@ -76,6 +81,7 @@
         android:layout_marginEnd="52dp"
         android:ems="10"
         android:inputType="text"
+        android:textColor="@color/material_dynamic_neutral100"
         app:layout_constraintBottom_toBottomOf="@id/textViewAddress"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -86,6 +92,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:text="Phone"
+        android:textColor="@color/material_dynamic_neutral100"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
 
@@ -96,6 +103,7 @@
         android:layout_marginEnd="52dp"
         android:ems="10"
         android:inputType="text"
+        android:textColor="@color/material_dynamic_neutral100"
         app:layout_constraintBottom_toBottomOf="@id/textViewPhone"
         app:layout_constraintEnd_toEndOf="parent" />
 

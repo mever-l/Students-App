@@ -42,8 +42,8 @@ class EditStudentActivity : AppCompatActivity() {
                     name = nameInput.text.toString(),
                     id = idInput.text.toString(),
                     avatarUrl = "",
-                    address = "",
-                    phone = "",
+                    address = addressInput.text.toString(),
+                    phone = phoneInput.text.toString(),
                     isChecked = student?.isChecked ?: false)
             Model.shared.editStudent(editedStudent, position!!)
             val intent = Intent(this, StudentDetailsActivity::class.java)

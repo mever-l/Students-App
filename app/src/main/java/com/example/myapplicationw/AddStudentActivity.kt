@@ -28,8 +28,17 @@ class AddStudentActivity : AppCompatActivity() {
         saveButton.setOnClickListener {
             val name = findViewById<EditText>(R.id.add_student_name_text_field).text.toString()
             val id = findViewById<EditText>(R.id.add_student_id_text_field).text.toString()
+            val address = findViewById<EditText>(R.id.add_student_address_text_field).text.toString()
+            val phone = findViewById<EditText>(R.id.add_student_phone_text_field).text.toString()
 
-            val student = Student(name = name, id = id, avatarUrl = "", isChecked = false)
+            val student =
+                Student(
+                    name = name,
+                    id = id,
+                    avatarUrl = "",
+                    address = address,
+                    phone = phone,
+                    isChecked = false)
             Model.shared.addStudent(student)
             finish()
 

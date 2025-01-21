@@ -1,7 +1,9 @@
 package com.example.myapplicationw
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +32,7 @@ class AddStudentActivity : AppCompatActivity() {
             val id = findViewById<EditText>(R.id.add_student_id_text_field).text.toString()
             val address = findViewById<EditText>(R.id.add_student_address_text_field).text.toString()
             val phone = findViewById<EditText>(R.id.add_student_phone_text_field).text.toString()
-
+            val checkBox = findViewById<CheckBox>(R.id.checkBox)
             val student =
                 Student(
                     name = name,
@@ -38,7 +40,7 @@ class AddStudentActivity : AppCompatActivity() {
                     avatarUrl = "",
                     address = address,
                     phone = phone,
-                    isChecked = false)
+                    isChecked = checkBox.isChecked)
             Model.shared.addStudent(student)
             finish()
 

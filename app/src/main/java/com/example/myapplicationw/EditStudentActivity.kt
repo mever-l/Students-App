@@ -3,6 +3,7 @@ package com.example.myapplicationw
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,13 +31,17 @@ class EditStudentActivity : AppCompatActivity() {
         val idInput = findViewById<EditText>(R.id.edit_student_id_text_field)
         val phoneInput = findViewById<EditText>(R.id.edit_student_phone_text_field)
         val addressInput = findViewById<EditText>(R.id.edit_student_address_text_field)
+        val checkBoxInput = findViewById<CheckBox>(R.id.checkBox)
+
         nameInput.setText(student?.name)
         idInput.setText(student?.id)
         phoneInput.setText(student?.phone)
         addressInput.setText(student?.address)
+        checkBoxInput.isChecked = student?.isChecked ?: false
 
         val saveButton = findViewById<Button>(R.id.edit_student_save_button)
         saveButton.setOnClickListener {
+            student?.isChecked = checkBoxInput.isChecked
             val editedStudent =
                 Student(
                     name = nameInput.text.toString(),

@@ -1,6 +1,5 @@
 package com.example.myapplicationw
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,9 +9,9 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.myapplicationw.model.Model
 import com.example.myapplicationw.model.Student
-import java.io.Serializable
 
 class EditStudentFragment : Fragment() {
 
@@ -21,9 +20,8 @@ class EditStudentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_edit_student, container, false)
-        val student: Student?= null
-//        val student: Student? = intent.getSerializableExtra("student") as Student?
-//        val position: Int? = intent.getSerializableExtra("position") as Int?
+        val student = arguments?.getSerializable("student") as? Student
+        val position = arguments?.getInt("position")
 
         val nameInput = view.findViewById<EditText>(R.id.edit_student_name_text_field)
         val idInput = view.findViewById<EditText>(R.id.edit_student_id_text_field)
@@ -48,11 +46,12 @@ class EditStudentFragment : Fragment() {
                     address = addressInput.text.toString(),
                     phone = phoneInput.text.toString(),
                     isChecked = student?.isChecked ?: false)
-//            Model.shared.editStudent(editedStudent, position!!)
-//            val intent = Intent(this, StudentDetailsActivity::class.java)
-//            intent.putExtra("student", editedStudent as Serializable)
-//            intent.putExtra("position", position as Serializable)
-//            startActivity(intent)
+            Model.shared.editStudent(editedStudent, position!!)
+            val bundle = Bundle().apply {
+                putSerializable("student", student)
+                putInt("position", position )
+            }
+            Navigation.findNavController(view).navigate(R.id.action_editStudentFragment_to_studentsRecyclerViewFragment, bundle)
         }
 
         val deleteButton = view.findViewById<Button>(R.id.edit_student_delete_button)
@@ -65,6 +64,7 @@ class EditStudentFragment : Fragment() {
         cancelButton.setOnClickListener {
             Navigation.findNavController(view).popBackStack()
         }
+
         return view
     }
 

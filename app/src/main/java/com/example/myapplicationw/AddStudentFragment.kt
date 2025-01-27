@@ -12,22 +12,17 @@ import androidx.navigation.Navigation
 import com.example.myapplicationw.model.Model
 import com.example.myapplicationw.model.Student
 
-
 class AddStudentFragment : Fragment() {
-    var students: MutableList<Student>? = null
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_add_student, container, false)
         init(view)
         return view
     }
 
     fun init(view: View) {
-        this.students = Model.shared.students
         val saveButton = view.findViewById<Button>(R.id.add_student_save_button)
         saveButton.setOnClickListener {
             val name = view.findViewById<EditText>(R.id.add_student_name_text_field).text.toString()
@@ -44,8 +39,7 @@ class AddStudentFragment : Fragment() {
                     phone = phone,
                     isChecked = checkBox.isChecked)
             Model.shared.addStudent(student)
-//            view.supportFragmentManager.popBackStack()
-
+            Navigation.findNavController(view).popBackStack()
         }
 
         val cancelButton = view.findViewById<Button>(R.id.add_student_cancel_button)

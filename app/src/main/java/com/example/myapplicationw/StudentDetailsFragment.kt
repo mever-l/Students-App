@@ -1,6 +1,5 @@
 package com.example.myapplicationw
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,20 +8,20 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
-import com.example.myapplicationw.model.Model
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.myapplicationw.model.Student
-import java.io.Serializable
 
 class StudentDetailsFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val student: Student?=null
+        setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_student_details, container, false)
-//        val student: Student? = intent.getSerializableExtra("student") as Student?
-//        val position: Int? = intent.getSerializableExtra("position") as Int?
+        val student = arguments?.getSerializable("student") as? Student
+        val position = arguments?.getInt("position") as Int
+
         val idTextView: TextView = view.findViewById(R.id.textViewIdValue)
         val nameTextView: TextView = view.findViewById(R.id.textViewNameValue)
         val addressTextView: TextView = view.findViewById(R.id.textViewAddressValue)
@@ -37,15 +36,15 @@ class StudentDetailsFragment : Fragment() {
 
         val editButton = view.findViewById<Button>(R.id.buttonEdit)
         editButton.setOnClickListener {
-//            val intent = Intent(this, EditStudentActivity::class.java)
-//            intent.putExtra("student", student as Serializable)
-//            intent.putExtra("position", position as Serializable)
-//            startActivity(intent)
+            val bundle = Bundle().apply {
+                putSerializable("student", student)
+                putInt("position", position )
+            }
+            findNavController().navigate(R.id.action_studentDetailsFragment_to_editStudentFragment, bundle)
         }
         val backButton = view.findViewById<Button>(R.id.buttonBack)
         backButton.setOnClickListener {
-//            val intent = Intent(this, StudentsRecyclerViewActivity::class.java)
-//            startActivity(intent)
+            Navigation.findNavController(view).popBackStack()
         }
 
         checkBox.setOnCheckedChangeListener { _, isChecked ->
@@ -63,4 +62,8 @@ class StudentDetailsFragment : Fragment() {
 
         return view
     }
+
+//    override fun onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.menu_fragment2, menu);  // Inflate a different menu for this fragment
+//    }
 }

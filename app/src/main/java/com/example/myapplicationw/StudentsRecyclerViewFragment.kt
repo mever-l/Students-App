@@ -1,6 +1,5 @@
 package com.example.myapplicationw
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplicationw.adapter.StudentsRecyclerAdapter
 import com.example.myapplicationw.model.Model
 import com.example.myapplicationw.model.Student
-import java.io.Serializable
 
 
 interface OnItemClickListener {
@@ -43,13 +42,11 @@ class StudentsRecyclerViewFragment : Fragment() {
         val adapter = StudentsRecyclerAdapter(students)
         adapter.listener = object : OnItemClickListener {
             override fun onItemClick(student: Student?, position: Int) {
-//                val intent = Intent(this@StudentsRecyclerViewActivity, StudentDetailsActivity::class.java)
-//                intent.putExtra("student", student as Serializable)
-//                intent.putExtra("position", position as Serializable)
-//                startActivity(intent)
-                val navigate = Navigation.findNavController(view)
-
-                Navigation.findNavController(view).navigate(R.id.action_studentsRecyclerViewFragment_to_studentDetailsFragment)
+                val bundle = Bundle().apply {
+                    putSerializable("student", student)
+                    putInt("position", position )
+                }
+                Navigation.findNavController(view).navigate(R.id.action_studentsRecyclerViewFragment_to_studentDetailsFragment, bundle)
             }
         }
         recyclerView.adapter = adapter

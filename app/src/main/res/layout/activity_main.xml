@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:title="My App" />
+        android:name="androidx.navigation.fragment.NavHostFragment" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"

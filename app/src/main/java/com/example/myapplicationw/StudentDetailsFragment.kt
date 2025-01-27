@@ -3,13 +3,19 @@ package com.example.myapplicationw
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
+import com.example.myapplicationw.model.Model
 import com.example.myapplicationw.model.Student
 
 class StudentDetailsFragment : Fragment() {
@@ -48,22 +54,35 @@ class StudentDetailsFragment : Fragment() {
         }
 
         checkBox.setOnCheckedChangeListener { _, isChecked ->
-//            student?.isChecked = isChecked
-//            val editedStudent =
-//                Student(
-//                    name = student?.name ?: "",
-//                    id = student?.id ?: "" ,
-//                    avatarUrl = "",
-//                    address = student?.address ?: "",
-//                    phone = student?.phone ?: "",
-//                    isChecked = student?.isChecked ?: false)
-//            Model.shared.editStudent(editedStudent, position!!)
+            student?.isChecked = isChecked
+            val editedStudent =
+                Student(
+                    name = student?.name ?: "",
+                    id = student?.id ?: "" ,
+                    avatarUrl = "",
+                    address = student?.address ?: "",
+                    phone = student?.phone ?: "",
+                    isChecked = student?.isChecked ?: false)
+            Model.shared.editStudent(editedStudent, position!!)
         }
 
+        val activityView = requireActivity().findViewById<View>(android.R.id.content)
+        val toolbar = activityView.findViewById<Toolbar>(R.id.toolbar)
+//        toolbar
         return view
     }
 
-//    override fun onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        inflater.inflate(R.menu.menu_fragment2, menu);  // Inflate a different menu for this fragment
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            android.R.id.home -> navController?.popBackStack()
+//            else -> navController?.let { NavigationUI.onNavDestinationSelected(item, it) }
+//        }
+//        return true
+//    }
+//
+//    override fun onCreateOptionsMenu(menu: Menu?, menuInflater: MenuInflater): Boolean {
+//        menuInflater.inflate(R.menu.main_menu, menu)
+//         super.onCreateOptionsMenu(menu)
+//        return true
 //    }
 }

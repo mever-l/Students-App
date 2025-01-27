@@ -3,11 +3,11 @@ package com.example.myapplicationw
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplicationw.adapter.StudentsRecyclerAdapter
@@ -53,8 +53,4 @@ class StudentsRecyclerViewFragment : Fragment() {
         return view
     }
 
-//    override fun onResume(view: View) {
-//        super.onResume()
-//        (findViewById<RecyclerView>(R.id.students_recycler_view).adapter as? StudentsRecyclerAdapter)?.notifyDataSetChanged()
-//    }
 }
